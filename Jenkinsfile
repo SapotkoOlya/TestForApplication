@@ -34,15 +34,15 @@ pipeline {
     //}
   }
 
-  //post {
-    //always {
-    //  archiveArtifacts artifacts: '**/*.trx', allowEmptyArchive: true
-    //}
-   // failure {
-     // echo 'Сборка или тесты завершились с ошибкой.'
-  //  }
-    //success {
-     // echo 'Все стадии прошли успешно.'
-    //}
-  //}
+  post {
+    always {
+      archiveArtifacts artifacts: '**/*.trx', allowEmptyArchive: true
+    }
+    failure {
+      echo 'Сборка или тесты завершились с ошибкой.'
+    }
+    success {
+      echo 'Все стадии прошли успешно.'
+    }
+  }
 }
