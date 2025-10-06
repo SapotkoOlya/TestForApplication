@@ -1,0 +1,29 @@
+using Config.ConfigReaders;
+
+namespace Config
+{
+    public class Tests
+    {
+        [SetUp]
+        public void Setup()
+        {
+        }
+
+        [Test]
+        public void Test1()
+        {
+            var user1 = CredentialsConfigReader.ReadConfig("Users.json", "Retailer");
+            Assert.AreEqual("dbfhbdhd", user1.Password, "Password is incorrect!");
+        }
+
+        [Test]
+        public void Test2()
+        {
+            EndPointsConfigReader.Init("EndPoints.json");
+            var user = EndPointsConfigReader.Get("AdminApiUsername");
+            var pass = EndPointsConfigReader.Get("AdminApiPassword");
+            var url = EndPointsConfigReader.Get("AdminApiUrl");
+            Assert.IsNotEmpty(user, "User is empty!");
+        }
+    }
+}
